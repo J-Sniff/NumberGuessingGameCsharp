@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+// Lets add limitations to number of guesses. Maybe larger number range
+
 namespace NumberGuessingGame
 {
 	internal class Program
@@ -27,6 +30,7 @@ namespace NumberGuessingGame
 				if (guess > randomNum)
 				{
                     Console.WriteLine("Your guess was to high go ahead and try again.");
+
                 }
 				else if (guess < randomNum)
 				{
