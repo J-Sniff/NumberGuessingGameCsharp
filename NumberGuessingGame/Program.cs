@@ -29,19 +29,19 @@ namespace NumberGuessingGame
 
 				if (guess > randomNum)
 				{
-                    Console.WriteLine("Your guess was to high go ahead and try again.");
+                    Console.WriteLine("Your guess was to high.");
                 }
 				else if (guess < randomNum)
 				{
-					Console.WriteLine("Your guess was to low go ahead and try again.");
+					Console.WriteLine("Your guess was to low.");
 				}
 				else if (guess == randomNum)
 				{
-                    Console.WriteLine("Nice guess! You win!!");
+                    Console.WriteLine("Nice guess! You win!!");					
 					Console.WriteLine("Would you like to play again? (y/n)");
 					string playAgain = Console.ReadLine();
 
-					// Ask the user if they want to play again
+					//Ask the user if they want to play again
 					if (playAgain == "y")
 					{
 						randomNum = random.Next(1, 11);
@@ -56,7 +56,7 @@ namespace NumberGuessingGame
 				// Adding a limit of 3 guesses	
 				if (guessLimit == 3)
 				{
-					Console.WriteLine("Sorry you have reached the guess limit.");
+					Console.WriteLine("Sorry you have reached the guess limit.");					
 					Console.WriteLine("Would you like to play again? (y/n)");
 					string playAgain = Console.ReadLine();
 
@@ -74,6 +74,6 @@ namespace NumberGuessingGame
             }  
 			Console.WriteLine("Thanks for playing!");
 			Console.ReadLine();	
-        }
+        }		
 	}
 }
