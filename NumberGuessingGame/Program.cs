@@ -5,48 +5,75 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-// Lets add limitations to number of guesses. Maybe larger number range
-
 namespace NumberGuessingGame
 {
 	internal class Program
 	{
 		static void Main(string[] args)
 		{
-			bool correctGuess = false;
 			Random random = new Random();
 
+			bool correctGuess = false;			
 			int randomNum = random.Next(1, 11);
+			int guessLimit = 0;
 
-            Console.WriteLine("Welcome to the Number Guessing Game!");
+			Console.WriteLine("Welcome to the Number Guessing Game!");
             Console.WriteLine("A number between 1 and 10 will be generated.");
             Console.WriteLine("If you guess the correct number, you win!");
 
-			while (!correctGuess)
+			while (!correctGuess && guessLimit < 3)
 			{
 				Console.WriteLine("Please enter your guess.");
-				int guess = Convert.ToInt32(Console.ReadLine()); 
+				int guess = Convert.ToInt32(Console.ReadLine());
+				guessLimit++;
 
 				if (guess > randomNum)
 				{
                     Console.WriteLine("Your guess was to high go ahead and try again.");
-
                 }
 				else if (guess < randomNum)
 				{
 					Console.WriteLine("Your guess was to low go ahead and try again.");
 				}
-				else
+				else if (guess == randomNum)
 				{
-                    Console.WriteLine("Nice guess!");
-					correctGuess = true;
-                }
-			}
+                    Console.WriteLine("Nice guess! You win!!");
+					Console.WriteLine("Would you like to play again? (y/n)");
+					string playAgain = Console.ReadLine();
 
-            Console.WriteLine("Congratz you have won!!");
+					// Ask the user if they want to play again
+					if (playAgain == "y")
+					{
+						randomNum = random.Next(1, 11);
+						correctGuess = false;
+						guessLimit = 0;
+					}
+					else if (playAgain == "n")
+					{
+						correctGuess = true;
+					}
+				}
+				// Adding a limit of 3 guesses	
+				if (guessLimit == 3)
+				{
+					Console.WriteLine("Sorry you have reached the guess limit.");
+					Console.WriteLine("Would you like to play again? (y/n)");
+					string playAgain = Console.ReadLine();
 
-
-            Console.ReadKey();
+					if (playAgain == "y")
+					{
+						randomNum = random.Next(1, 11);
+						correctGuess = false;
+						guessLimit = 0;
+					}
+					else if (playAgain == "n")
+					{
+						correctGuess = true;
+					}
+				}
+            }  
+			Console.WriteLine("Thanks for playing!");
+			Console.ReadLine();	
         }
 	}
 }
